@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="DishListing">
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
+   <script src="js/controllers.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div ng-controller="DishListingCtrl">
+  <accordion close-others="oneAtATime">
+        <accordion-group  is-open="isopen" ng-repeat="dish in dishes">
+            <accordion-heading >
+                {{dish.category}}
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+            </accordion-heading>
+			<ul style="background-color:#cacaca" >
+			  <li ng-repeat="item in dish.items" style="list-style-type: none;">
+				  <strong><p>{{item.id}}</p></strong>
+				  <h6>{{item.title}}</h6> 
+			  </li>
+			</ul>
+		</accordion-group>
+  </accordion>
+</div>
+</body>
+</html>
